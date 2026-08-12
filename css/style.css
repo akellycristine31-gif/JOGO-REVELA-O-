@@ -1,0 +1,850 @@
+* ==================================================
+   CONFIGURAÇÕES GERAIS
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #ead1b3;
+    font-family: 'Lora', serif;
+    color: #24170f;
+}
+
+/* ================================
+   DECORAÇÕES ESPALHADAS PELO SITE
+   ================================ */
+/* =========================================
+   DECORAÇÕES DO SITE
+   ========================================= */
+
+body {
+    position: relative;
+}
+
+.imagens {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.decoracao {
+    position: absolute;
+    pointer-events: none;
+}
+
+
+/* =========================================
+   NUVENS
+   ========================================= */
+
+.nuvem1 {
+    top: 80px;
+    left: 18%;
+    width: 220px;
+}
+
+.nuvem2 {
+    top: 650px;
+    right: 18%;
+    width: 240px;
+}
+
+.nuvem3 {
+    top: 1700px;
+    right: -1.5%;
+    width: 400px;
+}
+
+.nuvem4 {
+    top: 1500px;
+    left: 2%;
+    width: 450px;
+    opacity: 0.7;
+}
+
+.nuvem5 {
+    top: 110px;
+    right: 2%;
+    width: 220px;
+}
+
+
+/* =========================================
+   URSOS
+   ========================================= */
+
+.urso1 {
+    top: 100px;
+    left: 5%;
+    width: 230px;
+}
+
+.urso2 {
+    top: 620px;
+    right: 80%;
+    width: 200px;
+}
+
+.urso3 {
+    top: 365px;
+    right: 9%;
+    width: 325px;
+    opacity: 0.9;
+}
+
+.urso4 {
+    top: 1550px;
+    left: 15%;
+    width: 240px;
+}
+
+.urso5 {
+    top: 1300px;
+    right: 60px;
+    width: 230px;
+}
+
+.urso6 {
+    top: 2200px;
+    right: 12%;
+    width: 240px;
+}
+
+
+/* =========================================
+   BALÕES
+   ========================================= */
+
+.balao1 {
+    top: 100px;
+    left: 80%;
+    width: 100px;
+}
+
+.balao2 {
+    top: 620px;
+    left: 2%;
+    width: 120px;
+}
+
+.balao3 {
+    top: 1100px;
+    right: 10%;
+    width: 180px;
+}
+
+.balao4 {
+    top: 950px;
+    left: 2%;
+    width: 225px;
+}
+
+.balao5 {
+    top: 1950px;
+    right: 5%;
+    width: 180px;
+}
+
+.balao6 {
+    top: 850px;
+    right: 1%;
+    width: 190px;
+}
+
+.balao7 {
+    top:295px;
+    left: 17%;
+    width: 220px;
+}
+
+/* =========================================
+   URSO COM BALÃO
+   ========================================= */
+
+.ursocombalao {
+    top: 2200px;
+    left: 7%;
+    width: 200px;
+}
+
+section {
+    height: auto !important;
+    min-height: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+/* =====================================================
+   PÁGINA - FORMATO A4
+===================================================== */
+
+.pagina {
+    width: 100%;
+    max-width: 230mm;
+    margin: 0 auto;
+
+    background-color: #f3dcc1;
+
+    min-height: 297mm;
+
+    overflow: hidden;
+
+    box-shadow: border-box;
+    border-radius: 25px;
+}
+
+/* =====================================================
+   CAPA
+===================================================== */
+
+.capa {
+    position: relative;
+    min-height: 900px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 60px 50px;
+
+    overflow: hidden;
+}
+
+.conteudo-capa {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+/* =====================================================
+   SURPRESA
+===================================================== */
+
+.titulo-surpresa {
+    position: relative;
+    display: inline-block;
+
+    font-family: 'Anton', sans-serif;
+    font-size: 155px;
+    line-height: 1;
+
+    margin-top: 20px;
+}
+
+.titulo-surpresa::before {
+    content: "SURPRESA";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: white;
+
+    font-size: 200px;
+
+    z-index: -1;
+}
+
+.titulo-surpresa span {
+    position: relative;
+    z-index: 2;
+}
+
+/* =====================================================
+   SUBTÍTULO
+===================================================== */
+
+.subtitulo {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 30px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 55px;
+
+    font-weight: 500;
+
+    font-style: italic;
+
+    text-align: center;
+}
+
+.subtitulo::before {
+    content: "Chá de bebê Revelação";
+
+    position: absolute;
+
+    left: 50%;
+    top: 40%;
+
+    transform: translate(-50%, -50%);
+
+    color: white;
+
+    font-size: 50px;
+
+    white-space: nowrap;
+
+    z-index: -1;
+}
+
+/* =====================================================
+   NOMES
+===================================================== */
+
+.nomes {
+    margin-top: 7px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 43px;
+
+    font-style: italic;
+
+    text-align: center;
+}
+/* =====================================================
+   TEXTOS
+===================================================== */
+
+.texto-apresentacao {
+    max-width: 600px;
+    margin: 35px auto 0;
+    font-size: 19px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.contador-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 0
+}
+.contador-placeholder {
+    margin-top: 10px;
+
+    font-family: 'Yeseva One', serif;
+
+    font-size: 20px;
+}
+.contador {
+    text-align: center;
+    padding: 30px 20px;
+    margin: 30px auto;
+    max-width: 900px;
+}
+
+.contador h2 {
+    font-family: 'Bodoni moda', serif;
+    font-size:  28px;
+    margin-bottom: 5px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.contador-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tempo {
+    min-width: 110px;
+    padding: 20px 15px;
+    border-radius: 18px;
+    background-color: #f3e6d5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tempo span {
+    display: block;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.tempo small {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   SEÇÕES
+===================================================== */
+
+.evento,
+.fraldas,
+.presentes,
+.final {
+    position: relative;
+
+    text-align: center;
+
+    padding: 60px 50px;
+}
+
+/* =====================================================
+   TÍTULOS DAS SEÇÕES
+===================================================== */
+
+.titulo-secao {
+    font-family: 'Yeseva One', serif;
+
+    font-size: 30px;
+
+    margin-bottom: 5px;
+
+    text-transform: none;
+}
+.informacoes-evento {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 18px;
+    width: 100%;
+}
+
+.informacao {
+    flex: 1;
+    background-color: #8b3f00;
+    color: white;
+    border-radius: 35px;
+    min-height: 70px;
+    padding: 12px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.confirmacao {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.campo {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: 2px solid #8b3f00;
+    border-radius: 25px;
+
+    font-family: inherit;
+    font-size: 20px;
+
+    box-sizing: border-box;
+}
+.campo input {
+    width: 35%;
+    gap: 17px;
+    border: 2px solid #8b3f00;
+    outline: none;
+    background-color: transparent;
+    font-size: 25px;
+    font-family: 'Playfair Display' serif;
+}
+.botao-enviar-presenca {
+    width: 100%;
+    max-width: 800px;
+    padding: 18px 30px;
+    background-color: #8b3f00;
+    color: white;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: 0.3s;
+}
+.botao-enviar-presenca:hover {
+    transform: scale(1.03);
+}
+
+.botao-principal {
+    width: 100%;
+    max-width: 800px;
+    padding: 18px 30px;
+
+    background-color: #8b3f00;
+    color: white;
+
+    border: none;
+    border-radius: 35px;
+
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 5px
+}
+#form-presenca {
+    display: none;
+}
+
+.botao-principal:hover {
+    transform: scale(1.03);
+}
+
+.fraldas h2 {
+    font-family: 'Yeseva One', serif;
+    font-size: 28px;
+    margin-bottom: 35px;
+    text-transform: none;
+    margin-top: 1rem;
+}
+.texto-fraldas {
+    max-width: 800px;
+    margin: 0px auto 40px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+.fraldas p strong {
+    font-family: 'playfair display', serif;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.fraldas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+/* =====================================================
+   CAIXAS DE FRALDAS
+===================================================== */
+
+.fralda-box {
+    width: 100%;
+    max-width: 340px;
+    height: 130px;
+
+    background-color: #873900;
+    color: white;
+
+    border-radius: 25px;
+
+    padding: 10px 20px;
+    box-sizing: border-box;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fralda-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+
+    margin: 0 0 3px 0;
+}
+
+.fralda-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+
+    margin: 0 0 7px 0;
+}
+/* =====================================================
+   BARRA DE PROGRESSO
+===================================================== */
+
+.barra-contagem {
+    width: 100%;
+    height: 12px;
+
+    background-color: #f5dfc0;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-bottom: 7px;
+}
+
+.barra-progresso {
+    height: 100%;
+    width: 0%;
+
+    background-color: #e99a00;
+
+    border-radius: 20px;
+
+    transition: width 0.3s ease;
+}
+/* =====================================================
+   BOTÃO ESCOLHER
+===================================================== */
+
+.botao-escolher {
+    width: 90%;
+    height: 38px;
+
+    margin: 0;
+
+    padding: 0;
+
+    background-color: #e99a00;
+    color: #5a2900;
+
+    border: 2px solid #6b3000;
+
+    border-radius: 22px;
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+
+    transition: 0.2s ease;
+}
+
+.botao-escolher:hover {
+    transform: scale(1.03);
+}
+
+/* =====================================================
+   XG
+===================================================== */
+
+.fralda-xg {
+    grid-column: 1 / 3;
+    width: 340px;
+    max-width: 100%;
+    justify-self: center;
+    margin-bottom: 5px
+}
+
+.buttom {
+    width: 100%;
+    max-width: 800px;
+    padding: 10px 20px 3px;
+}
+/* =====================================================
+   PRESENTES
+===================================================== */
+.presentes h2 {
+    font-family: 'Yeseva One', serif;
+    font-size: 30px;
+    margin-bottom: 35px;
+    text-transform: none;
+    margin-top: 1rem;
+}
+.presentes titulo-secao {
+    font-family: 'Yeseva One', serif;
+    font-size: 22px;
+    margin-bottom: 2rem;
+    text-transform: none;
+    max-width: 600px;
+    margin: 35px auto 0;
+    line-height: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+.presentes p {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 18px;
+    line-height: 1.5rem;
+    margin-bottom: 35px;
+}
+.presentes p strong {
+    font-family: 'playfair display', serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+.botao-principal-presentes {
+    width: 90%;
+    max-width: 800px;
+    margin: 20 auto;
+    padding-bottom: 1.5rem;
+    background-color: #8b3f00;
+    color: white;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.botao-principal a {
+    color: white;
+    text-decoration: none;
+    font-family: 'playfair display', serif;
+    font-size: 20px;
+}
+.final {
+    padding-bottom: 35px;
+    margin-top: 50px;
+    font-size: 18px;
+    line-height: 2.0;
+    padding: 30px 20px
+}
+
+.final p {
+    max-width: 600px;
+    margin: 0px auto 40px;
+}
+.nomes-final {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-style: italic;
+}
+.mensagem-final {
+    margin-bottom: 20px;
+}
+.google-maps-container {
+    margin-top: 50px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+    margin-bottom: 20px;
+}
+.google-maps {
+    width: 100%;
+    max-width: 800PX;
+    padding: 14px 30px;
+    margin: 10px auto;
+
+    background-color: #994500;
+    color: white;
+
+    border: none;
+    border-radius: 80px;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    cursor: pointer;
+    text-align: center;
+
+    transition: 0.3s;
+}
+.google-maps a {
+    color: white;
+    text-decoration: none;
+}
+.google-maps:hover {
+    transform: scale(1.03);
+}
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .pagina {
+        width: 100%;
+
+        box-shadow: none;
+    }
+    .capa,
+    .evento,
+    .fraldas,
+    .presentes,
+    .final {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .capa {
+        min-height: 800px;
+    }
+
+    .titulo-surpresa {
+        font-size: 48px;
+    }
+
+    .titulo-surpresa::before {
+        font-size: 51px;
+    }
+
+    .subtitulo {
+        font-size: 28px;
+    }
+
+    .subtitulo::before {
+        font-size: 30px;
+    }
+
+    .nomes {
+        font-size: 29px;
+    }
+
+    .texto-apresentacao {
+        font-size: 13px;
+    }
+
+    .fraldas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fralda-xg {
+        grid-column: auto;
+    }
+
+    .fralda-box {
+        max-width: 300px;
+    }
+
+    .urso-1,
+    .urso-2 {
+        width: 100px;
+    }
+
+    .balao-1,
+    .balao-2 {
+        width: 90px;
+    }
+
+    .nuvem-1,
+    .nuvem-2 {
+        width: 130px;
+    }
+
+    .info-box {
+        width: 100%;
+    }
+}
