@@ -115,15 +115,11 @@
 <section class="evento">
     <div class="informacoes-evento">
 
-        <div class="informacao">
-            05 DE SETEMBRO 2026
+        <div class="coluna-data">
+            <div>  05 DE SETEMBRO 2026 </div>
+            <div>  às 16h <div>
         </div>
-
-        <div class="informacao">
-            às 16h
-        </div>
-
-        <div class="informacao">
+        <div class="endereço">
             Rua José Gonçalves de alkimin n10
              vale de jatobá
         </div>
@@ -135,31 +131,38 @@
             CONFIRME A SUA PRESENÇA AQUI
         </button>
     </div>
-    <div id="form-presenca" class="form-presenca">
 
-    <div class="campo">
-        <label for="nome">Nome completo</label>
-        <input 
-            type="text" 
-            id="nome" 
-            required
-        >
-    </div>
+<!-- POPUP DE CONFIRMAÇÃO -->
+<div id="popup-overlay" class="popup-overlay">
 
-    <div class="campo">
-        <label for="adultos">Quantidade de pessoas (+ 10 anos) </label>
-        <input 
-            type="number" 
-            id="adultos" 
-            min="1" 
-            value="1"
-            required
-        >
-    </div>
+    <div class="popup-presenca">
 
-    <button type="button" class="botao-enviar-presenca">
-        Enviar confirmação
-    </button>
+        <button class="fechar-popup" type="button">×</button>
+
+        <div class="popup-decoracao"></div>
+
+        <h2>Confirme sua presença</h2>
+
+        <p class="popup-subtitulo">
+            Preencha os dados abaixo para confirmar sua presença.
+        </p>
+
+        <form class="form-presenca">
+
+            <div class="campo">
+                <label for="nome">Nome completo</label>
+                <input id="nome" type="text" placeholder="Digite seu nome">
+            </div>
+
+            <div class="campo">
+                <label for="quantidade">Quantidade de pessoas</label>
+                <input id="quantidade" type="number" min="1" placeholder="Ex: 2">
+            </div>
+             <button id="enviarConfirmacao" class="botao-confirmar-popup" type="submit">
+               Enviar confirmação
+             </button>
+        </form>
+     </div>
 </div>
 </section>
  </section>

@@ -51,13 +51,46 @@ function atualizarContador() {
 atualizarContador();
 
 setInterval(atualizarContador, 1000);
+
+
+// POPUP DE CONFIRMAÇÃO
+
+const popupPresenca = document.getElementById("popup-overlay");
 const botaoConfirmar = document.getElementById("botao-confirmar-presenca");
-const formularioPresenca = document.getElementById("form-presenca");
+const fecharPopup = document.querySelector(".fechar-popup");
+const formulario = document.querySelector(".form-presenca");
+
+
+// ABRIR POPUP
 
 botaoConfirmar.addEventListener("click", function () {
-    formularioPresenca.style.display = "block";
+
+    popupPresenca.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
 });
 
+
+// FECHAR PELO X
+
+fecharPopup.addEventListener("click", function () {
+
+    popupPresenca.style.display = "none";
+    document.body.style.overflow = "";
+
+});
+
+
+// ENVIAR CONFIRMAÇÃO E FECHAR
+
+formulario.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    popupPresenca.style.display = "none";
+    document.body.style.overflow = "";
+
+});
 // ==========================================
 // ESCOLHA DE FRALDAS
 // ==========================================
