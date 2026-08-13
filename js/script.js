@@ -81,81 +81,314 @@ fecharPopup.addEventListener("click", function () {
 
 });
 
-
-// ENVIAR CONFIRMAÇÃO
+// ========================================
+// ENVIO DA CONFIRMAÇÃO
+// PREPARADO PARA O FIREBASE
+// ========================================
 
 formulario.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
-    popupPresenca.style.display = "none";
-    document.body.style.overflow = "";
+    // Pega os dados preenchidos no formulário
+    const nome = document.getElementById("nome").value.trim();
+    const quantidade = document.getElementById("quantidade").value;
+
+    // Verifica se o nome foi preenchido
+    if (nome === "") {
+        alert("Por favor, digite seu nome.");
+        return;
+    }
+
+    // Verifica se a quantidade foi preenchida
+    if (quantidade === "" || quantidade < 1) {
+        alert("Por favor, informe a quantidade de pessoas.");
+        return;
+    }
+
+    // Dados que serão enviados para o Firebase
+    const dadosConfirmacao = {
+        nome: nome,
+        quantidade: Number(quantidade),
+        dataConfirmacao: new Date().toISOString()
+    };
+
+    // POR ENQUANTO:
+    // Apenas mostra os dados no console.
+    // Amanhã vamos substituir esta parte pelo envio para o Firebase.
+
+    console.log("Confirmação preparada:", dadosConfirmacao);
+
+    // Mensagem temporária de teste
+    alert("Dados preparados para envio!");
 
 });
+
 // ==========================================
-// ESCOLHA DE FRALDAS
+// ESCOLHA DE FRALDAS - POPUP
 // ==========================================
 
 const botoesEscolher = document.querySelectorAll(".botao-escolher");
+
+const popupFralda = document.getElementById("popup-fralda-overlay");
+const fecharPopupFralda = document.getElementById("fechar-popup-fralda");
+
+const tamanhoFraldaPopup = document.getElementById("tamanho-fralda-popup");
+const quantidadeFraldaPopup = document.getElementById("quantidade-fralda-popup");
+
+const diminuirFralda = document.getElementById("diminuir-fralda");
+const aumentarFralda = document.getElementById("aumentar-fralda");
+
+const confirmarFralda = document.getElementById("confirmar-fralda");
+
+
+// GUARDA O TAMANHO ESCOLHIDO
+
+let tamanhoSelecionado = "";
+
+
+// GUARDA A QUANTIDADE
+
+let quantidadeSelecionada = 1;
+
+
+// ==========================================
+// ABRIR POPUP
+// ==========================================
 
 botoesEscolher.forEach(function(botao) {
 
     botao.addEventListener("click", function() {
 
-        // Encontra a caixa da fralda onde o botão foi clicado
         const caixaFralda = botao.closest(".fralda-box");
 
-        // Descobre o tamanho da fralda
-        const tamanho = caixaFralda.querySelector("h3").textContent.trim();
+        tamanhoSelecionado = caixaFralda
+            .querySelector("h3")
+            .textContent
+            .trim();
 
-        // Descobre a meta de pacotes
         const textoMeta = caixaFralda.querySelector("p").textContent;
+
         const meta = parseInt(textoMeta.match(/\d+/)[0]);
 
-        // Pergunta quantos pacotes a pessoa quer escolher
-        let quantidade = prompt(
-            `Quantos pacotes de fralda ${tamanho} você deseja levar?\n\nMeta: ${meta} pacotes`
-        );
 
-        // Se a pessoa cancelar
-        if (quantidade === null) {
-            return;
-        }
+        // Começa sempre com 1
 
-        // Transforma em número
-        quantidade = parseInt(quantidade);
+        quantidadeSelecionada = 1;
 
-        // Verifica se foi digitado um número válido
-        if (isNaN(quantidade) || quantidade <= 0) {
-            alert("Digite uma quantidade válida.");
-            return;
-        }
+        quantidadeFraldaPopup.textContent = quantidadeSelecionada;
 
-        // Não permite escolher mais que a meta
-        if (quantidade > meta) {
-            alert(`A quantidade máxima para ${tamanho} é de ${meta} pacotes.`);
-            return;
-        }
+        tamanhoFraldaPopup.textContent = tamanhoSelecionado;
 
-        // Calcula a porcentagem da barra
-        const porcentagem = (quantidade / meta) * 100;
 
-        // Atualiza a barra de progresso
-        const barra = caixaFralda.querySelector(".barra-progresso");
+        // Guarda a meta da fralda
 
-        barra.style.width = porcentagem + "%";
+        popupFralda.dataset.meta = meta;
 
-        // Muda o texto do botão
-        botao.textContent = `ESCOLHIDO: ${quantidade} PACOTE${quantidade > 1 ? "S" : ""}`;
 
-        // Desabilita o botão depois da escolha
-        botao.disabled = true;
+        // Abre o popup
 
-        // Mostra uma mensagem de confirmação
-        alert(
-            `Você escolheu ${quantidade} pacote${quantidade > 1 ? "s" : ""} de fralda ${tamanho}.\n\nObrigado pelo carinho! ❤️`
-        );
+        popupFralda.style.display = "flex";
+
+        document.body.style.overflow = "hidden";
 
     });
+
+});
+
+
+// ==========================================
+// BOTÃO +
+// ==========================================
+
+aumentarFralda.addEventListener("click", function() {
+
+    const meta = Number(popupFralda.dataset.meta);
+
+    if (quantidadeSelecionada < meta) {
+
+        quantidadeSelecionada++;
+
+        quantidadeFraldaPopup.textContent = quantidadeSelecionada;
+
+    } else {
+
+        alert(`A quantidade máxima é de ${meta} pacotes.`);
+
+    }
+
+});
+
+
+// ==========================================
+// BOTÃO -
+// ==========================================
+
+diminuirFralda.addEventListener("click", function() {
+
+    if (quantidadeSelecionada > 1) {
+
+        quantidadeSelecionada--;
+
+        quantidadeFraldaPopup.textContent = quantidadeSelecionada;
+
+    }
+
+});
+
+
+// ==========================================
+// FECHAR PELO X
+// ==========================================
+
+fecharPopupFralda.addEventListener("click", function() {
+
+    popupFralda.style.display = "none";
+
+    document.body.style.overflow = "";
+
+});
+
+
+// ==========================================
+// CONFIRMAR ESCOLHA
+// ==========================================
+
+confirmarFralda.addEventListener("click", function() {
+
+    const caixaFralda = [...document.querySelectorAll(".fralda-box")]
+        .find(function(caixa) {
+
+            return caixa.querySelector("h3").textContent.trim() === tamanhoSelecionado;
+
+        });
+
+
+    const textoMeta = caixaFralda.querySelector("p").textContent;
+
+    const meta = parseInt(textoMeta.match(/\d+/)[0]);
+
+
+    // Calcula a porcentagem
+
+    const porcentagem =
+        (quantidadeSelecionada / meta) * 100;
+
+
+    // Atualiza a barra
+
+    const barra =
+        caixaFralda.querySelector(".barra-progresso");
+
+    barra.style.width = porcentagem + "%";
+
+
+    // Atualiza o botão
+
+    const botao =
+        caixaFralda.querySelector(".botao-escolher");
+
+    botao.textContent =
+        `ESCOLHIDO: ${quantidadeSelecionada} PACOTE${quantidadeSelecionada > 1 ? "S" : ""}`;
+
+
+    // Desabilita o botão
+
+    botao.disabled = true;
+
+
+    // Fecha o popup
+
+    popupFralda.style.display = "none";
+
+    document.body.style.overflow = "";
+
+
+    // Mensagem
+
+    alert(
+        `Você escolheu ${quantidadeSelecionada} pacote${quantidadeSelecionada > 1 ? "s" : ""} de fralda ${tamanhoSelecionado}.\n\nObrigado pelo carinho! ❤️`
+    );
+
+});
+// ==========================================
+// MENSAGENS AOS FUTUROS PAPAIS
+// ==========================================
+
+const nomeMensagem =
+    document.getElementById("nome-mensagem");
+
+const textoMensagem =
+    document.getElementById("texto-mensagem");
+
+const enviarMensagem =
+    document.getElementById("enviar-mensagem");
+
+const mensagensContainer =
+    document.getElementById("mensagens-container");
+
+
+enviarMensagem.addEventListener("click", function () {
+
+    const nome = nomeMensagem.value.trim();
+
+    const mensagem = textoMensagem.value.trim();
+
+
+    // Verifica o nome
+
+    if (nome === "") {
+
+        alert("Por favor, digite seu nome.");
+
+        return;
+
+    }
+
+
+    // Verifica a mensagem
+
+    if (mensagem === "") {
+
+        alert("Por favor, escreva uma mensagem.");
+
+        return;
+
+    }
+
+
+    // Cria o cartão da mensagem
+
+    const cartao = document.createElement("div");
+
+    cartao.classList.add("mensagem-card");
+
+
+    cartao.innerHTML = `
+
+        <strong>${nome}</strong>
+
+        <p>${mensagem}</p>
+
+    `;
+
+
+    // Coloca a mensagem na tela
+
+    mensagensContainer.prepend(cartao);
+
+
+    // Limpa os campos
+
+    nomeMensagem.value = "";
+
+    textoMensagem.value = "";
+
+
+    // Mensagem temporária
+
+    alert(
+        "Sua mensagem foi enviada com carinho! ❤️"
+    );
 
 });

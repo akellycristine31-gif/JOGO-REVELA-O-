@@ -165,7 +165,6 @@
      </div>
 </div>
 </section>
- </section>
  <section class="fraldas">
             <h2 class="titulo-secao">
                 CONTADOR DE FRALDAS
@@ -256,7 +255,53 @@
         </button>
     </div>
 </div>
- </section>
+<!-- POPUP DE ESCOLHA DE FRALDA -->
+<div id="popup-fralda-overlay" class="popup-fralda-overlay">
+
+    <div class="popup-fralda">
+
+        <button id="fechar-popup-fralda" class="fechar-popup-fralda" type="button">
+            ×
+        </button>
+
+        <div class="popup-fralda-decoracao">
+            🧸
+        </div>
+
+        <h2>Escolha suas fraldas</h2>
+
+        <p class="popup-fralda-tamanho">
+            Fralda <strong id="tamanho-fralda-popup">M</strong>
+        </p>
+
+        <p class="popup-fralda-texto">
+            Quantos pacotes você deseja levar?
+        </p>
+
+        <div class="seletor-fraldas">
+
+            <button id="diminuir-fralda" type="button">
+                −
+            </button>
+
+            <span id="quantidade-fralda-popup">
+                1
+            </span>
+
+            <button id="aumentar-fralda" type="button">
+                +
+            </button>
+
+        </div>
+
+        <button id="confirmar-fralda" class="botao-confirmar-fralda" type="button">
+            CONFIRMAR ESCOLHA
+        </button>
+
+    </div>
+
+</div>
+</section>
      <section class="presentes">
             <h2 class="titulo-secao">
                 Deseja nos presentear de outra forma?
@@ -271,7 +316,7 @@
             <button class="botao-principal">
                 <a href="https://www.amazon.com.br/baby-reg/kelly-cristine-fevereiro-2027-trsmarias/MQEJM2VD9SGL?ref_=cm_sw_r_cp_ud_dp_6XPT4DRK43SJCTV0ZD9N" target="_blank"> CLIQUE AQUI PARA VER A LISTA DA AMAZON </a>
             </button>
- </section>
+</section>
      <section class="final">
      <p> 
         OBRIGADO POR FAZER PARTE DESTE MOMENTO TÃO ESPECIAL EM NOSSAS VIDAS!
@@ -291,8 +336,84 @@
         <a href="https://maps.app.goo.gl/ebSRfuzJYN4aotqS6" target="_blank"> CLIQUE AQUI PARA VER O ENDEREÇO NO GOOGLE MAPS</a>
     </button>
 </div>
+<!-- ==========================================
+     MENSAGENS AOS FUTUROS PAPAIS
+========================================== -->
+
+<section class="mensagens-papais">
+
+    <h2 class="titulo-secao">
+        DEIXE UMA MENSAGEM AOS FUTUROS PAPAIS 💛
+    </h2>
+
+    <p class="texto-mensagens">
+        Deixe aqui uma mensagem de carinho para a Kelly,
+        o Nathan e o nosso bebê. ❤️
+    </p>
+
+    <div class="caixa-mensagem">
+
+        <div class="campo-mensagem">
+
+            <label for="nome-mensagem">
+                Seu nome
+            </label>
+
+            <input
+                id="nome-mensagem"
+                type="text"
+                placeholder="Digite seu nome"
+            >
+
+        </div>
+
+
+        <div class="campo-mensagem">
+
+            <label for="texto-mensagem">
+                Sua mensagem
+            </label>
+
+            <textarea
+                id="texto-mensagem"
+                placeholder="Escreva uma mensagem de carinho..."
+                maxlength="300"
+            ></textarea>
+
+        </div>
+
+
+        <button
+            id="enviar-mensagem"
+            class="botao-enviar-mensagem"
+            type="button"
+        >
+            ENVIAR MENSAGEM 💛
+        </button>
+
+    </div>
+
+
+    <!-- MENSAGENS ENVIADAS -->
+
+    <div class="lista-mensagens">
+
+        <h3>
+            💕 Mensagens de carinho
+        </h3>
+
+        <div id="mensagens-container">
+
+            <!-- As mensagens aparecerão aqui -->
+
+        </div>
+
+    </div>
+
+</section>
 
     </main>
+    <script type="module" src="firebase.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
