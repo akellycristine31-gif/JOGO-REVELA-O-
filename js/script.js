@@ -53,6 +53,7 @@ atualizarContador();
 setInterval(atualizarContador, 1000);
 
 
+
 // POPUP DE CONFIRMAÇÃO
 
 const popupPresenca = document.getElementById("popup-overlay");
@@ -81,7 +82,7 @@ fecharPopup.addEventListener("click", function () {
 });
 
 
-// ENVIAR CONFIRMAÇÃO E FECHAR
+// ENVIAR CONFIRMAÇÃO
 
 formulario.addEventListener("submit", function (event) {
 

@@ -1419,6 +1419,9 @@ section {
 /* BOTÃO CONFIRMAR */
 
 .botao-confirmar-popup {
+
+    display: block;
+    
     width: 100%;
 
     height: 48px;
@@ -1430,13 +1433,16 @@ section {
     color: #fff;
 
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 100;
 
     cursor: pointer;
 
     margin-top: 5px;
 }
 
+.popup-overlay {
+    display: none;
+}
 
 /* CELULAR */
 
@@ -1444,6 +1450,7 @@ section {
 
     .popup-overlay {
         padding: 15px;
+        display: none;
     }
 
     .popup-presenca {
