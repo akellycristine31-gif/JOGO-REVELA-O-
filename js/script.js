@@ -11,7 +11,9 @@ import {
     getDocs,
     doc,
     setDoc,
-    getDoc
+    getDoc,
+    query,
+    orderBy
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
@@ -938,100 +940,106 @@ confirmarFralda.addEventListener(
 // MENSAGENS AOS FUTUROS PAPAIS
 // ==========================================
 
-const nomeMensagem =
-    document.getElementById(
-        "nome-mensagem"
-    );
+const nomeMensagem = document.getElementById("nome-mensagem");
+const textoMensagem = document.getElementById("texto-mensagem");
+const enviarMensagem = document.getElementById("enviar-mensagem");
+const mensagensContainer = document.getElementById("mensagens-container");
+
+// ==========================================
+// ENVIAR MENSAGEM PARA O FIREBASE
+// ==========================================
+
+enviarMensagem.addEventListener("click", async function () {
+
+    const nome = nomeMensagem.value.trim();
+    const mensagem = textoMensagem.value.trim();
+
+    if (nome === "") {
+        alert("Por favor, digite seu nome.");
+        return;
+    }
+
+    if (mensagem === "") {
+        alert("Por favor, escreva uma mensagem.");
+        return;
+    }
+
+    try {
+
+        await addDoc(collection(db, "mensagens"), {
+            nome: nome,
+            mensagem: mensagem,
+            data: new Date()
+        });
+
+        nomeMensagem.value = "";
+        textoMensagem.value = "";
+
+        alert("Sua mensagem foi enviada com carinho! ❤️");
+
+        carregarMensagens();
+
+    } catch (erro) {
+
+        console.error("Erro ao salvar mensagem:", erro);
+
+        alert("Não foi possível enviar a mensagem. Tente novamente.");
+
+    }
+
+});
 
 
-const textoMensagem =
-    document.getElementById(
-        "texto-mensagem"
-    );
+// ==========================================
+// CARREGAR MENSAGENS DO FIREBASE
+// ==========================================
 
+async function carregarMensagens() {
 
-const enviarMensagem =
-    document.getElementById(
-        "enviar-mensagem"
-    );
+    try {
 
-
-const mensagensContainer =
-    document.getElementById(
-        "mensagens-container"
-    );
-
-
-enviarMensagem.addEventListener(
-    "click",
-    function () {
-
-        const nome =
-            nomeMensagem.value.trim();
-
-
-        const mensagem =
-            textoMensagem.value.trim();
-
-
-        if (nome === "") {
-
-            alert(
-                "Por favor, digite seu nome."
+        const consulta =
+            query(
+                collection(db, "mensagens"),
+                orderBy("data", "desc")
             );
 
-            return;
+        const resultado =
+            await getDocs(consulta);
 
-        }
+        mensagensContainer.innerHTML = "";
 
+        resultado.forEach((documento) => {
 
-        if (mensagem === "") {
+            const dados = documento.data();
 
-            alert(
-                "Por favor, escreva uma mensagem."
-            );
+            const cartao =
+                document.createElement("div");
 
-            return;
+            cartao.classList.add("mensagem-card");
 
-        }
+            cartao.innerHTML = `
+                <strong>${dados.nome}</strong>
+                <p>${dados.mensagem}</p>
+            `;
 
+            mensagensContainer.appendChild(cartao);
 
-        const cartao =
-            document.createElement(
-                "div"
-            );
+        });
 
+    } catch (erro) {
 
-        cartao.classList.add(
-            "mensagem-card"
-        );
-
-
-        cartao.innerHTML = `
-
-            <strong>${nome}</strong>
-
-            <p>${mensagem}</p>
-
-        `;
-
-
-        mensagensContainer.prepend(
-            cartao
-        );
-
-
-        nomeMensagem.value =
-            "";
-
-
-        textoMensagem.value =
-            "";
-
-
-        alert(
-            "Sua mensagem foi enviada com carinho! ❤️"
+        console.error(
+            "Erro ao carregar mensagens:",
+            erro
         );
 
     }
-);
+}
+
+
+// ==========================================
+// CARREGAR QUANDO A PÁGINA ABRIR
+// ==========================================
+
+carregarMensagens();
