@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Painel Administrativo</title>
+
+    <link rel="stylesheet" href="admin.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ===================================== -->
+    <!-- TELA DE SENHA -->
+    <!-- ===================================== -->
+
+    <div id="tela-login" class="tela-login">
+
+        <div class="caixa-login">
+
+            <div class="login-icone">
+                🔐
+            </div>
+
+            <h1>
+                Área Administrativa
+            </h1>
+
+            <p>
+                Digite a senha para acessar o painel.
+            </p>
+
+
+            <input
+                type="password"
+                id="senha-admin"
+                placeholder="Digite a senha"
+                autocomplete="off"
+            >
+
+
+            <button
+                id="botao-login"
+                type="button"
+            >
+                ENTRAR
+            </button>
+
+
+            <p
+                id="mensagem-erro"
+                class="mensagem-erro"
+            ></p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================== -->
+    <!-- PAINEL ADMINISTRATIVO -->
+    <!-- ===================================== -->
+
+    <main
+        id="painel-admin"
+        class="painel"
+        style="display: none;"
+    >
+
+        <h1>
+            Painel Administrativo
+        </h1>
+
+        <p class="subtitulo">
+            Chá de Bebê — Kelly e Nathan
+        </p>
+
+
+        <!-- ================================= -->
+        <!-- CONFIRMAÇÕES -->
+        <!-- ================================= -->
+
+        <section class="card">
+
+            <h2>
+                👥 Confirmações
+            </h2>
+
+
+            <div class="resumo">
+
+
+                <div class="numero">
+
+                    <strong id="totalConfirmacoes">
+                        0
+                    </strong>
+
+                    <span>
+                        Confirmações
+                    </span>
+
+                </div>
+
+
+
+                <div class="numero">
+
+                    <strong id="totalAdultos">
+                        0
+                    </strong>
+
+                    <span>
+                        Pessoas
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="tabela-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Nome
+                            </th>
+
+                            <th>
+                                Pessoas
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="listaConfirmacoes"
+                    >
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================= -->
+        <!-- FRALDAS -->
+        <!-- ================================= -->
+
+        <section class="card">
+
+            <h2>
+                🧷 Controle de Fraldas
+            </h2>
+
+
+            <div class="fraldas">
+
+
+                <div class="fralda">
+
+                    <span>
+                        RN
+                    </span>
+
+                    <strong id="fraldaRN">
+                        0
+                    </strong>
+
+                    <small>
+                        / 7 pacotes
+                    </small>
+
+                </div>
+
+
+
+                <div class="fralda">
+
+                    <span>
+                        P
+                    </span>
+
+                    <strong id="fraldaP">
+                        0
+                    </strong>
+
+                    <small>
+                        / 14 pacotes
+                    </small>
+
+                </div>
+
+
+
+                <div class="fralda">
+
+                    <span>
+                        M
+                    </span>
+
+                    <strong id="fraldaM">
+                        0
+                    </strong>
+
+                    <small>
+                        / 27 pacotes
+                    </small>
+
+                </div>
+
+
+
+                <div class="fralda">
+
+                    <span>
+                        G
+                    </span>
+
+                    <strong id="fraldaG">
+                        0
+                    </strong>
+
+                    <small>
+                        / 48 pacotes
+                    </small>
+
+                </div>
+
+
+
+                <div class="fralda">
+
+                    <span>
+                        XG
+                    </span>
+
+                    <strong id="fraldaXG">
+                        0
+                    </strong>
+
+                    <small>
+                        / 53 pacotes
+                    </small>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <p class="atualizacao">
+            Dados atualizados automaticamente pelo Firebase.
+        </p>
+
+
+        <button
+            id="botao-sair"
+            class="botao-sair"
+            type="button"
+        >
+            SAIR
+        </button>
+
+        <!-- ================================= -->
+<!-- MENSAGENS DE CARINHO -->
+<!-- ================================= -->
+
+<section class="card">
+
+    <h2>
+        💌 Mensagens de Carinho
+    </h2>
+
+    <div
+        id="listaMensagens"
+        class="lista-mensagens"
+    >
+    </div>
+
+</section>
+
+
+    </main>
+
+
+
+    <!-- ===================================== -->
+    <!-- JAVASCRIPT -->
+    <!-- ===================================== -->
+
+    <script
+        type="module"
+        src="admin.js"
+    ></script>
+
+
+</body>
+
+</html>

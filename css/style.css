@@ -1952,3 +1952,50 @@ section {
     }
 
 }
+/* ==========================================
+   ÁREA ADMINISTRATIVA
+========================================== */
+
+.acesso-administrativo {
+
+    text-align: center;
+
+    margin-top: 40px;
+
+    padding-bottom: 25px;
+    color:rgb(0, 0, 0)
+
+
+}
+
+
+.botao-administrativo {
+
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    border-radius: 20px;
+
+    background: transparent;
+
+    color: #8a6a58;
+
+    border: 1px solid #c77b44;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    transition: 0.3s;
+
+}
+
+
+.botao-administrativo:hover {
+
+    background: #cab2a5;
+
+    color: white;
+
+}
