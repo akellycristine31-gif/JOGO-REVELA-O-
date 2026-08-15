@@ -1999,3 +1999,200 @@ section {
     color: white;
 
 }
+
+/* ========================================== */
+/* MENSAGENS DE CARINHO - PÁGINA PRINCIPAL */
+/* ========================================== */
+
+#mensagens-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 25px;
+}
+
+
+/* CARD DA MENSAGEM */
+
+.mensagem-card {
+    position: relative;
+
+    padding: 20px 22px;
+
+    background: #fffaf6;
+
+    border: 1px solid #eaded4;
+
+    border-radius: 18px;
+
+    box-shadow: 0 4px 12px rgba(92, 70, 56, 0.08);
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+
+.mensagem-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 18px rgba(92, 70, 56, 0.12);
+}
+
+
+/* NOME */
+
+.mensagem-card strong {
+    display: block;
+
+    margin-bottom: 8px;
+
+    padding-right: 35px;
+
+    color: #6d5040;
+
+    font-family: Georgia, serif;
+
+    font-size: 17px;
+}
+
+
+/* MENSAGEM */
+
+.mensagem-card p {
+    margin: 0;
+
+    color: #705b4d;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    word-break: break-word;
+}
+
+
+/* CORAÇÃO DECORATIVO */
+
+.mensagem-card::after {
+    content: "♡";
+
+    position: absolute;
+
+    top: 15px;
+
+    right: 18px;
+
+    color: #c59a83;
+
+    font-size: 27px;
+}
+
+
+/* ========================================== */
+/* BOTÕES */
+/* ========================================== */
+
+.botoes-mensagem {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 16px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid #eee2d9;
+}
+
+
+.botoes-mensagem button {
+    padding: 8px 14px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+/* EDITAR */
+
+.botao-editar-mensagem {
+    background: #ead8c9;
+
+    color: #6d5040;
+}
+
+
+.botao-editar-mensagem:hover {
+    background: #dfc6b4;
+
+    transform: translateY(-1px);
+}
+
+
+/* APAGAR */
+
+.botao-apagar-mensagem {
+    background: #f0dddd;
+
+    color: #9b5c5c;
+}
+
+
+.botao-apagar-mensagem:hover {
+    background: #e8caca;
+
+    transform: translateY(-1px);
+}
+
+
+/* ========================================== */
+/* CELULAR */
+/* ========================================== */
+
+@media (max-width: 600px) {
+
+    #mensagens-container {
+        gap: 12px;
+
+        margin-top: 20px;
+    }
+
+
+    .mensagem-card {
+        padding: 18px;
+    }
+
+
+    .mensagem-card strong {
+        font-size: 16px;
+    }
+
+
+    .mensagem-card p {
+        font-size: 14px;
+
+        line-height: 1.55;
+    }
+
+
+    .botoes-mensagem {
+        gap: 8px;
+    }
+
+
+    .botoes-mensagem button {
+        flex: 1;
+
+        padding: 9px 8px;
+
+        font-size: 12px;
+    }
+
+}

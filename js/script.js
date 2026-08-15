@@ -13,7 +13,9 @@ import {
     setDoc,
     getDoc,
     query,
-    orderBy
+    orderBy,
+    updateDoc,
+    deleteDoc
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
@@ -42,9 +44,9 @@ const db = getFirestore(app);
 const metasFraldas = {
     RN: 7,
     P: 14,
-    M: 27,
-    G: 48,
-    XG: 53
+    M: 32,
+    G: 53,
+    XG: 20,
 };
 
 
@@ -838,30 +840,41 @@ if (confirmarFralda) {
     );
 }
 
-
 // ==========================================
 // MENSAGENS AOS FUTUROS PAPAIS
 // ==========================================
 
 const nomeMensagem =
-    document.getElementById(
-        "nome-mensagem"
-    );
+    document.getElementById("nome-mensagem");
 
 const textoMensagem =
-    document.getElementById(
-        "texto-mensagem"
-    );
+    document.getElementById("texto-mensagem");
 
 const enviarMensagem =
-    document.getElementById(
-        "enviar-mensagem"
-    );
+    document.getElementById("enviar-mensagem");
 
 const mensagensContainer =
-    document.getElementById(
-        "mensagens-container"
+    document.getElementById("mensagens-container");
+
+
+// ==========================================
+// IDENTIFICADOR DO VISITANTE
+// ==========================================
+
+let identificadorVisitante =
+    localStorage.getItem("identificadorMensagem");
+
+
+if (!identificadorVisitante) {
+
+    identificadorVisitante =
+        crypto.randomUUID();
+
+    localStorage.setItem(
+        "identificadorMensagem",
+        identificadorVisitante
     );
+}
 
 
 // ==========================================
@@ -874,18 +887,12 @@ if (enviarMensagem) {
         "click",
         async function () {
 
-            if (
-                !nomeMensagem ||
-                !textoMensagem
-            ) {
-                return;
-            }
-
             const nome =
                 nomeMensagem.value.trim();
 
             const mensagem =
                 textoMensagem.value.trim();
+
 
             if (nome === "") {
 
@@ -896,6 +903,7 @@ if (enviarMensagem) {
                 return;
             }
 
+
             if (mensagem === "") {
 
                 alert(
@@ -904,6 +912,7 @@ if (enviarMensagem) {
 
                 return;
             }
+
 
             try {
 
@@ -920,20 +929,28 @@ if (enviarMensagem) {
                         mensagem:
                             mensagem,
 
+                        identificador:
+                            identificadorVisitante,
+
                         data:
                             new Date()
+
                     }
                 );
+
 
                 nomeMensagem.value = "";
 
                 textoMensagem.value = "";
 
+
                 alert(
                     "Sua mensagem foi enviada com carinho! ❤️"
                 );
 
+
                 carregarMensagens();
+
 
             } catch (erro) {
 
@@ -942,12 +959,16 @@ if (enviarMensagem) {
                     erro
                 );
 
+
                 alert(
                     "Não foi possível enviar a mensagem. Tente novamente."
                 );
+
             }
+
         }
     );
+
 }
 
 
@@ -960,6 +981,7 @@ async function carregarMensagens() {
     if (!mensagensContainer) {
         return;
     }
+
 
     try {
 
@@ -975,12 +997,15 @@ async function carregarMensagens() {
                 )
             );
 
+
         const resultado =
             await getDocs(
                 consulta
             );
 
+
         mensagensContainer.innerHTML = "";
+
 
         resultado.forEach(
             function (documento) {
@@ -988,25 +1013,237 @@ async function carregarMensagens() {
                 const dados =
                     documento.data();
 
+
                 const cartao =
                     document.createElement(
                         "div"
                     );
 
+
                 cartao.classList.add(
                     "mensagem-card"
                 );
 
+
+                const souEu =
+                    dados.identificador ===
+                    identificadorVisitante;
+
+
                 cartao.innerHTML = `
-                    <strong>${dados.nome}</strong>
-                    <p>${dados.mensagem}</p>
+
+                    <strong>
+                        ${dados.nome || "Sem nome"}
+                    </strong>
+
+                    <p>
+                        ${dados.mensagem || ""}
+                    </p>
+
                 `;
+
+
+                // ==================================
+                // BOTÕES DA PRÓPRIA MENSAGEM
+                // ==================================
+
+                if (souEu) {
+
+                    const botoes =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    botoes.classList.add(
+                        "botoes-mensagem"
+                    );
+
+
+                    botoes.innerHTML = `
+
+                        <button
+                            class="botao-editar-mensagem"
+                        >
+                            ✏️ Editar
+                        </button>
+
+                        <button
+                            class="botao-apagar-mensagem"
+                        >
+                            🗑️ Apagar
+                        </button>
+
+                    `;
+
+
+                    cartao.appendChild(
+                        botoes
+                    );
+
+
+                    // ==============================
+                    // EDITAR
+                    // ==============================
+
+                    botoes
+                        .querySelector(
+                            ".botao-editar-mensagem"
+                        )
+                        .addEventListener(
+                            "click",
+                            async function () {
+
+                                const novoNome =
+                                    prompt(
+                                        "Altere seu nome:",
+                                        dados.nome
+                                    );
+
+
+                                if (
+                                    novoNome ===
+                                    null
+                                ) {
+                                    return;
+                                }
+
+
+                                const novoTexto =
+                                    prompt(
+                                        "Altere sua mensagem:",
+                                        dados.mensagem
+                                    );
+
+
+                                if (
+                                    novoTexto ===
+                                    null
+                                ) {
+                                    return;
+                                }
+
+
+                                if (
+                                    novoNome.trim() ===
+                                    "" ||
+                                    novoTexto.trim() ===
+                                    ""
+                                ) {
+
+                                    alert(
+                                        "Nome e mensagem não podem ficar vazios."
+                                    );
+
+                                    return;
+                                }
+
+
+                                try {
+
+                                    await updateDoc(
+                                        doc(
+                                            db,
+                                            "mensagens",
+                                            documento.id
+                                        ),
+                                        {
+
+                                            nome:
+                                                novoNome.trim(),
+
+                                            mensagem:
+                                                novoTexto.trim()
+
+                                        }
+                                    );
+
+
+                                    carregarMensagens();
+
+
+                                } catch (erro) {
+
+                                    console.error(
+                                        "Erro ao editar mensagem:",
+                                        erro
+                                    );
+
+
+                                    alert(
+                                        "Não foi possível editar a mensagem."
+                                    );
+
+                                }
+
+                            }
+                        );
+
+
+                    // ==============================
+                    // APAGAR
+                    // ==============================
+
+                    botoes
+                        .querySelector(
+                            ".botao-apagar-mensagem"
+                        )
+                        .addEventListener(
+                            "click",
+                            async function () {
+
+                                const confirmar =
+                                    confirm(
+                                        "Tem certeza que deseja apagar sua mensagem? ❤️"
+                                    );
+
+
+                                if (!confirmar) {
+                                    return;
+                                }
+
+
+                                try {
+
+                                    await deleteDoc(
+                                        doc(
+                                            db,
+                                            "mensagens",
+                                            documento.id
+                                        )
+                                    );
+
+
+                                    carregarMensagens();
+
+
+                                } catch (erro) {
+
+                                    console.error(
+                                        "Erro ao apagar mensagem:",
+                                        erro
+                                    );
+
+
+                                    alert(
+                                        "Não foi possível apagar a mensagem."
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                }
+
 
                 mensagensContainer.appendChild(
                     cartao
                 );
+
             }
         );
+
 
     } catch (erro) {
 
@@ -1014,12 +1251,14 @@ async function carregarMensagens() {
             "Erro ao carregar mensagens:",
             erro
         );
+
     }
+
 }
 
 
 // ==========================================
-// CARREGAR MENSAGENS AO ABRIR
+// CARREGAR AO ABRIR A PÁGINA
 // ==========================================
 
 carregarMensagens();

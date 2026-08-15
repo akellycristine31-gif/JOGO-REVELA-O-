@@ -2,7 +2,7 @@
 // SENHA DO ADMINISTRADOR
 // ==========================================
 
-const SENHA_ADMIN = "helenaoujoas";
+const SENHA_ADMIN = "8520258";
 
 
 // ==========================================

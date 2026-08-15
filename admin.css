@@ -383,3 +383,126 @@ th {
 
     cursor: pointer;
 }
+
+/* ========================================== */
+/* MENSAGENS DE CARINHO - ADMIN */
+/* ========================================== */
+
+.lista-mensagens {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
+/* CARD DA MENSAGEM */
+
+.mensagem-admin {
+    position: relative;
+
+    padding: 20px 50px 20px 22px;
+
+    background: #fbf7f3;
+
+    border: 1px solid #eaded4;
+
+    border-radius: 16px;
+
+    box-shadow: 0 3px 10px rgba(92, 70, 56, 0.07);
+
+    transition: 0.2s ease;
+}
+
+
+.mensagem-admin:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 16px rgba(92, 70, 56, 0.12);
+}
+
+
+/* ÍCONE */
+
+.mensagem-admin::after {
+    content: "💌";
+
+    position: absolute;
+
+    top: 18px;
+
+    right: 18px;
+
+    font-size: 21px;
+}
+
+
+/* NOME */
+
+.mensagem-admin-nome {
+    margin-bottom: 10px;
+
+    color: #6d5040;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+/* MENSAGEM */
+
+.mensagem-admin-texto {
+    color: #705b4d;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    word-wrap: break-word;
+}
+
+
+/* NENHUMA MENSAGEM */
+
+.sem-mensagens {
+    margin: 10px 0 0;
+
+    padding: 25px;
+
+    text-align: center;
+
+    color: #8b6a56;
+
+    background: #fbf7f3;
+
+    border: 1px dashed #d8c6b8;
+
+    border-radius: 15px;
+}
+
+
+/* ========================================== */
+/* CELULAR */
+/* ========================================== */
+
+@media (max-width: 600px) {
+
+    .lista-mensagens {
+        gap: 12px;
+    }
+
+    .mensagem-admin {
+        padding: 18px 45px 18px 18px;
+    }
+
+    .mensagem-admin-nome {
+        font-size: 16px;
+    }
+
+    .mensagem-admin-texto {
+        font-size: 14px;
+    }
+
+}
+
