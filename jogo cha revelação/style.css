@@ -1,0 +1,1089 @@
+/* ==========================================
+   CONFIGURAÇÃO GERAL
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f4eee8;
+
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+
+/* ==========================================
+   ÁREA PRINCIPAL
+========================================== */
+
+.jogo {
+
+    width: 98%;
+
+    max-width: 1450px;
+
+    margin: 0 auto;
+}
+
+
+/* ==========================================
+   ÁREA DO JOGO
+========================================== */
+
+.area-jogo {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 45px;
+}
+
+
+/* ==========================================
+   LADO ESQUERDO
+========================================== */
+
+.lateral-esquerda {
+
+    width: 220px;
+
+    min-width: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 22px;
+}
+
+
+/* ==========================================
+   LADO ESQUERDO
+========================================== */
+
+.lateral-esquerda {
+
+    width: 220px;
+    min-width: 220px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    gap: 22px;
+
+    margin-left: -80px;
+    margin-top: -170px;
+}
+
+
+/* ==========================================
+   TÍTULO
+========================================== */
+
+h1 {
+
+    margin: -50px 0 0 0;
+    margin-left: -125px;
+   
+
+    font-family: "Titan One", cursive;
+
+    font-size: 70px;
+
+    line-height: 1.5;
+    font-weight: 400;
+
+    letter-spacing: 1px;
+
+    color: #6d5145;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   SUBTÍTULO
+========================================== */
+
+.instrucao {
+
+    
+    margin: -50px 0 0 0;
+    margin-left: -125px;
+    margin-top: 20px;
+
+    font-family: Helvetica, Arial, sans-serif;
+
+    font-size: 25px;
+
+    line-height: 1.35;
+
+    font-weight: 900;
+
+    color: #765e53;
+
+    text-align: center;
+}
+
+/* ==========================================
+   MENSAGEM
+========================================== */
+
+#mensagem {
+
+    margin-top: 50px;
+
+    font-family: Helvetica, Arial, sans-serif;
+
+    font-size: 35px;
+
+    line-height: 1.35;
+
+    font-weight: 900;
+
+    color: #6d5145;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   ÁREA DO TABULEIRO
+========================================== */
+
+.area-tabuleiro {
+
+    flex: 0 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* ==========================================
+   TABULEIRO
+========================================== */
+
+#tabuleiro {
+
+    display: grid;
+
+    grid-template-columns:
+        42px repeat(9, 1fr);
+
+    grid-template-rows:
+        42px repeat(9, 1fr);
+
+    width: min(64vw, 680px);
+
+    height: min(64vw, 680px);
+
+    min-width: 560px;
+
+    min-height: 560px;
+
+    border: 2px solid #444;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 30px rgba(91, 66, 57, 0.15);
+}
+
+
+/* ==========================================
+   CABEÇALHO DAS COLUNAS
+========================================== */
+
+.coluna {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family: Helvetica, Arial, sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    color: #3f3531;
+
+    border-right: 1px solid #555;
+
+    border-bottom: 1px solid #555;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a9e6eb,
+            #d6cddd,
+            #e5a4c2
+        );
+}
+
+
+/* ==========================================
+   NÚMEROS DAS LINHAS
+========================================== */
+
+.linha {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family: Helvetica, Arial, sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    color: #3f3531;
+
+    border-right: 1px solid #555;
+
+    border-bottom: 1px solid #555;
+
+    background:
+        linear-gradient(
+            180deg,
+            #b5e7eb,
+            #d4c8dc
+        );
+}
+
+
+/* ==========================================
+   CASAS
+========================================== */
+
+.casa {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 0;
+
+    min-height: 0;
+
+    font-size: 23px;
+
+    border-right: 1px solid #555;
+
+    border-bottom: 1px solid #555;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a9e5eb,
+            #d2c9db,
+            #e4a5c1
+        );
+
+    transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
+}
+
+
+/* ==========================================
+   EFEITO DAS CASAS
+========================================== */
+
+.casa:hover {
+
+    filter: brightness(1.08);
+
+    transform: scale(1.02);
+
+    z-index: 2;
+}
+
+
+/* ==========================================
+   LETRA ENCONTRADA
+========================================== */
+
+.acerto {
+
+    background: #fff !important;
+
+    cursor: default;
+}
+
+
+.letra {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family: Helvetica, Arial, sans-serif;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    color: #634656;
+}
+
+
+/* ==========================================
+   ÁGUA
+========================================== */
+
+.agua {
+
+    background: #b7dce1 !important;
+
+    cursor: default;
+}
+
+
+.agua::after {
+
+    content: "•";
+
+    font-size: 35px;
+
+    color: #759ba0;
+}
+
+
+/* ==========================================
+   BOMBA
+========================================== */
+
+.bomba {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 38px;
+
+    line-height: 1;
+
+    pointer-events: none;
+
+    z-index: 5;
+
+    animation:
+        aparecerBomba 0.3s ease-out,
+        pulsarBomba 1.2s ease-in-out 0.3s infinite;
+}
+
+
+/* ==========================================
+   ANIMAÇÃO DA BOMBA
+========================================== */
+
+@keyframes aparecerBomba {
+
+    0% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        opacity: 0;
+    }
+
+    60% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.3);
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes pulsarBomba {
+
+    0% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.10);
+    }
+
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+}
+
+/* ==========================================
+   LATERAL DIREITA
+========================================== */
+
+.lateral-direita {
+
+    width: 280px;
+    min-width: 280px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 22px;
+
+    margin-left: 40px;
+    margin-top: -40px;
+}
+
+
+/* ==========================================
+   PAINEL DE CONTROLES
+========================================== */
+
+.painel-jogo {
+
+    width: 350px;
+    min-height: 145px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 14px 25px;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    border: 2px solid rgba(255, 182, 193, 0.6);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.10);
+
+    backdrop-filter: blur(8px);
+}
+
+
+/* ==========================================
+   BOTÃO REINICIAR
+========================================== */
+
+#reiniciarJogo {
+
+    width: 200px;
+    min-height: 75px;
+
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+
+    border: none;
+    border-radius: 15px;
+
+    background: linear-gradient(
+        145deg,
+        #ff8fab,
+        #ff5f8d
+    );
+
+    color: white;
+
+    font-family: Helvetica, Arial, sans-serif;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 0 #d94b73,
+        0 8px 15px rgba(217, 75, 115, 0.22);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+/* ==========================================
+   ÍCONE REINICIAR
+========================================== */
+
+.icone-reiniciar {
+
+    font-size: 27px;
+
+    line-height: 27px;
+
+    font-weight: normal;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+/* ==========================================
+   HOVER
+========================================== */
+
+#reiniciarJogo:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 0 #d94b73,
+        0 12px 20px rgba(217, 75, 115, 0.28);
+}
+
+
+#reiniciarJogo:hover .icone-reiniciar {
+
+    transform: rotate(-180deg);
+}
+
+
+/* ==========================================
+   CLIQUE
+========================================== */
+
+#reiniciarJogo:active {
+
+    transform: translateY(3px);
+
+    box-shadow:
+        0 2px 0 #d94b73,
+        0 4px 8px rgba(217, 75, 115, 0.20);
+}
+
+/* ==========================================
+   RESPONSIVO
+========================================== */
+
+@media (max-width: 1050px) {
+
+    .area-jogo {
+
+        gap: 25px;
+    }
+
+    .lateral-esquerda {
+
+        width: 180px;
+
+        min-width: 180px;
+    }
+
+    .lateral-direita {
+
+        width: 160px;
+
+        min-width: 160px;
+    }
+
+    #tabuleiro {
+
+        width: 60vw;
+
+        height: 60vw;
+
+        min-width: 500px;
+
+        min-height: 500px;
+    }
+
+    h1 {
+
+        font-size: 35px;
+    }
+}
+
+
+/* ==========================================
+   CELULAR
+========================================== */
+
+@media (max-width: 800px) {
+
+    body {
+
+        align-items: flex-start;
+
+        padding: 25px 0 30px;
+
+        overflow-x: hidden;
+    }
+
+
+    .area-jogo {
+
+        flex-direction: column;
+
+        gap: 25px;
+    }
+
+
+    .lateral-esquerda {
+
+        width: 100%;
+
+        min-width: auto;
+
+        gap: 12px;
+    }
+
+
+    .lateral-direita {
+
+        width: 100%;
+
+        min-width: auto;
+    }
+
+
+    h1 {
+
+        font-size: 32px;
+    }
+
+
+    .instrucao {
+
+        font-size: 16px;
+    }
+
+
+    #mensagem {
+
+        width: 100%;
+
+        margin-top: 10px;
+    }
+
+
+    #tabuleiro {
+
+        width: 92vw;
+
+        height: 92vw;
+
+        min-width: 0;
+
+        min-height: 0;
+
+        max-width: 650px;
+
+        max-height: 650px;
+    }
+
+
+    .painel-jogo {
+
+        width: 230px;
+
+        min-height: 75px;
+
+        flex-direction: row;
+
+        padding: 10px;
+    }
+
+
+    #reiniciarJogo {
+
+        width: 145px;
+
+        min-height: 58px;
+    }
+
+}
+
+/* ==========================================
+   REVELAÇÃO FINAL
+========================================== */
+
+#revelacao {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: black;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    z-index: 9999;
+}
+
+
+/* ==========================================
+   (É UM)
+========================================== */
+
+.texto-eum {
+
+    color: #ffffff;
+
+    font-size: 35px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    margin-bottom: 5px;
+}
+
+
+/* ==========================================
+   MENINO
+========================================== */
+
+.texto-menino {
+
+    color: #39d353;
+
+    font-size: 100px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    animation: pulsarMenino 1.5s ease-in-out infinite;
+
+}
+
+
+/* ==========================================
+   BEM VINDO
+========================================== */
+
+.texto-bem-vindo {
+
+    color: white;
+
+    font-size: 50px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    margin-top: 15px;
+}
+
+
+/* ==========================================
+   JOAS
+========================================== */
+
+.texto-joas {
+
+    color: #64d6f3;
+
+    font-size: 140px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    margin-top: 5px;
+
+    animation: pulsarJoas 1.5s ease-in-out infinite;
+
+}
+
+
+/* ==========================================
+   PULSAR MENINO
+   LETRA = VERDE
+   BRILHO = VERDE CLARO
+========================================== */
+
+@keyframes pulsarMenino {
+
+    0% {
+
+        transform: scale(1);
+
+        text-shadow:
+            0 0 5px #f6fcf6,
+            0 0 10px #b6ffb6;
+
+    }
+
+    25% {
+
+        transform: scale(1.05);
+
+        text-shadow:
+            0 0 10px #f5fcf5,
+            0 0 25px #b6ffb6,
+            0 0 45px #b6ffb6;
+
+    }
+
+    50% {
+
+        transform: scale(1);
+
+        text-shadow:
+            0 0 5px #b6ffb6,
+            0 0 10px #b6ffb6;
+
+    }
+
+}
+
+
+/* ==========================================
+   PULSAR JOAS
+   LETRA = AZUL
+   BRILHO = AZUL CLARO
+========================================== */
+
+@keyframes pulsarJoas {
+
+    0% {
+
+        transform: scale(1);
+
+        text-shadow:
+            0 0 5px #feffff,
+            0 0 10px #b2e3fd;
+
+    }
+
+    50% {
+
+        transform: scale(1.05);
+
+        text-shadow:
+            0 0 10px #c2eaff,
+            0 0 25px #b0dff8,
+            0 0 50px #9ddcff;
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+        text-shadow:
+            0 0 5px #9ddcff,
+            0 0 10px #9ddcff;
+
+    }
+
+}
+
+/* ==========================================
+   CONFETES
+========================================== */
+
+.confetes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 10001;
+}
+
+.confetes span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    opacity: 0;
+
+    color: white;
+}
+
+
+/* ==========================================
+   ATIVAÇÃO
+========================================== */
+
+.confetes.ativa span {
+    animation: explosaoConfete 4s ease-out infinite;
+}
+
+/* ==========================================
+   POSIÇÕES
+========================================== */
+
+.confetes span:nth-child(1)  { --x: -450px; --y: -350px; }
+.confetes span:nth-child(2)  { --x: -350px; --y: -450px; }
+.confetes span:nth-child(3)  { --x: -200px; --y: -300px; }
+.confetes span:nth-child(4)  { --x: -80px;  --y: -450px; }
+.confetes span:nth-child(5)  { --x: 80px;   --y: -450px; }
+.confetes span:nth-child(6)  { --x: 200px;  --y: -300px; }
+.confetes span:nth-child(7)  { --x: 350px;  --y: -450px; }
+.confetes span:nth-child(8)  { --x: 450px;  --y: -350px; }
+
+.confetes span:nth-child(9)  { --x: -500px; --y: -100px; }
+.confetes span:nth-child(10) { --x: 500px;  --y: -100px; }
+
+.confetes span:nth-child(11) { --x: -500px; --y: 100px; }
+.confetes span:nth-child(12) { --x: 500px;  --y: 100px; }
+
+.confetes span:nth-child(13) { --x: -400px; --y: 250px; }
+.confetes span:nth-child(14) { --x: -250px; --y: 350px; }
+.confetes span:nth-child(15) { --x: -100px; --y: 300px; }
+
+.confetes span:nth-child(16) { --x: 100px;  --y: 300px; }
+.confetes span:nth-child(17) { --x: 250px;  --y: 350px; }
+.confetes span:nth-child(18) { --x: 400px;  --y: 250px; }
+
+.confetes span:nth-child(19) { --x: -300px; --y: 100px; }
+.confetes span:nth-child(20) { --x: 300px;  --y: 100px; }
+
+.confetes span:nth-child(21) { --x: -100px; --y: -200px; }
+.confetes span:nth-child(22) { --x: 100px;  --y: -200px; }
+.confetes span:nth-child(23) { --x: 0px;    --y: -500px; }
+
+
+/* ==========================================
+   EXPLOSÃO + QUEDA
+========================================== */
+
+@keyframes explosaoConfete {
+
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        transform:
+            translate(
+                calc(-50% + var(--x) * 0.2),
+                calc(-50% + var(--y) * 0.2)
+            )
+            scale(2);
+
+        opacity: 1;
+    }
+
+    25% {
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y) + 100vh)
+            )
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
